@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function animateSection(sectionIndex) {
-            // Define your animations for each section
             if (sectionIndex === 0) {
                 animateSection1();
             } else if (sectionIndex === 1) {
@@ -25,46 +24,74 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function animateSection1() {
-            // Anime.js animations for Section 1
+            anime({
+                targets: ['.svg'],
+                scale: [1, 1.2],
+                duration: 1000,
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutQuad'
+              });
             anime({
                 targets: ['#search', '#btn-search'],
-                translateX: ['-100%', 0], // Move from -100% to 0 along the X-axis (right to left)
-                easing: 'easeInOutQuad', // Use easing function for smooth animation
-                duration: 1000, // Animation duration in milliseconds
-                delay: anime.stagger(200), // Stagger the animation for each element
+                translateX: ['-100%', 0],
+                easing: 'easeInOutQuad',
+                duration: 1500,
+                delay: anime.stagger(200),
+            });
+            var cards = document.querySelectorAll('.card');
+            anime({
+                targets: cards,
+                opacity: [0, 1],
+                translateY: [30, 0],
+                easing: 'easeInOutQuad',
+                duration: 1000,
+                delay: anime.stagger(200),
             });
         }
 
         function animateSection2() {
-            // Anime.js animations for Section 2
-            document.addEventListener('DOMContentLoaded', function () {
-                // Target the div
-                var fadeInDiv = document.getElementById('fadeInDiv');
-        
-                // Use anime.js to fade in the div
-                anime({
-                    targets: fadeInDiv,
-                    opacity: [0, 1], // animate from 0 to 1
-                    duration: 1000, // animation duration in milliseconds
-                    easing: 'easeInOutQuad' // easing function for smooth animation
-                });
+            anime({
+                targets: ['#fadeInDiv'],
+                opacity: [0, 1],
+                duration: 1500,
+                easing: 'easeInOutQuad'
+            });
+            anime({
+                targets: '#myChart',
+                translateX: [-100, 0],
+                opacity: [0, 1],
+                easing: 'easeInOutQuad',
+                duration: 2000,
             });
         }
 
         function animateSection3() {
-            // Anime.js animations for Section 3
             anime({
-                targets: ['.footer'],
-                translateY: [50, 0], // Move from 50px down to 0 along the Y-axis
-                opacity: [0, 1], // Fade in from 0 to 1
-                easing: 'easeInOutQuad', // Use easing function for smooth animation
-                duration: 1000, // Animation duration in milliseconds
-                delay: anime.stagger(200), // Stagger the animation for each element
+                targets: '.footer',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                easing: 'easeInOutQuad',
+                duration: 1000,
+                delay: anime.stagger(200, { start: 300 }),
+            });
+            anime({
+                targets: '.row',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                easing: 'easeOutExpo',
+                duration: 2000,
+                delay: anime.stagger(200)
+            });
+            anime({
+                targets: ['.table-responsive'],
+                translateY: [100, 0],
+                opacity: [0, 1],
+                easing: 'easeOutBounce',
+                duration: 2000,
             });
         }
     });
-});
-    
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -74,26 +101,20 @@ document.addEventListener('DOMContentLoaded', function () {
         ["Harry Potter and the Deathly Hallows", "J.K. Rowling", "Fiction", "2007", "Hardcover"],
         ["Crooked Kingdom", "Leigh Bardugo", "Romance", "2016", "Kindle Edition"],
         ["A Court of Mist and Fury", "Sarah J. Maas", "Fantasy", "2016", "Paperback"],
-        // ["Fourth Wing", "Rebecca Yarros", "Fiction", "2023", "Hardcover"],
-        // ["The Return of the King", "J.R.R. Tolkien", "Adventure", "1955", "Kindle Edition"],
-        // ["The House of Hades", "Rick Riordan", "Mythology", "2013", "Hardcover"],
-        // ["The Nightingale", "Kristin Hannah", "Historical Fiction", "2015", "Hardcover"],
     ];
-    $(document).ready(function () {
-        $('#books').DataTable({
-            data: dataSet,
-            columns: [
-                { title: "Title" },
-                { title: "Author" },
-                { title: "Genre" },
-                { title: "Year" },
-                { title: "Type" }
-            ],
-            lengthMenu: [4, 10, 25, 50],
-            pageLength: 4
-        });
-    });
 
+    $('#books').DataTable({
+        data: dataSet,
+        columns: [
+            { title: "Title" },
+            { title: "Author" },
+            { title: "Genre" },
+            { title: "Year" },
+            { title: "Type" }
+        ],
+        lengthMenu: [4, 10, 25, 50],
+        pageLength: 4
+    });
     // Chart
     const labels = [
         'Fantasy',
@@ -140,13 +161,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     };
-
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
-
-document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search').addEventListener('input', function () {
         var searchTerm = this.value.toLowerCase();
         var articles = document.querySelectorAll('#bookDisplay article');
@@ -164,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function openBookModal(title, author, genre, year, type, description, reviews, availability) {
-    // Set modal title and details dynamically
     document.getElementById('bookModalLabel').innerText = title;
     document.getElementById('bookDetails').innerHTML = `
         <strong>Author:</strong> ${author}<br>
@@ -174,14 +191,11 @@ function openBookModal(title, author, genre, year, type, description, reviews, a
         <strong>Description:</strong> ${description}<br>
         <strong>Reviews:</strong> ${reviews}<br>
         <strong>Availability:</strong> ${availability}
-        <!-- Add more details, reviews, availability, etc. here -->
     `;
 
-    // Open the modal
     $('#bookModal').modal('show');
 }
 function openBookModal2(title, author, genre, year, type, description, reviews, availability) {
-    // Set modal title and details dynamically
     document.getElementById('bookModalLabel2').innerText = title;
     document.getElementById('bookDetails2').innerHTML = `
         <strong>Author:</strong> ${author}<br>
@@ -191,14 +205,11 @@ function openBookModal2(title, author, genre, year, type, description, reviews, 
         <strong>Description:</strong> ${description}<br>
         <strong>Reviews:</strong> ${reviews}<br>
         <strong>Availability:</strong> ${availability}
-        <!-- Add more details, reviews, availability, etc. here -->
     `;
 
-    // Open the modal
     $('#bookModal2').modal('show');
 }
 function openBookModal3(title, author, genre, year, type, description, reviews, availability) {
-    // Set modal title and details dynamically
     document.getElementById('bookModalLabel3').innerText = title;
     document.getElementById('bookDetails3').innerHTML = `
         <strong>Author:</strong> ${author}<br>
@@ -208,14 +219,11 @@ function openBookModal3(title, author, genre, year, type, description, reviews, 
         <strong>Description:</strong> ${description}<br>
         <strong>Reviews:</strong> ${reviews}<br>
         <strong>Availability:</strong> ${availability}
-        <!-- Add more details, reviews, availability, etc. here -->
     `;
 
-    // Open the modal
     $('#bookModal3').modal('show');
 }
 function openBookModal4(title, author, genre, year, type, description, reviews, availability) {
-    // Set modal title and details dynamically
     document.getElementById('bookModalLabel4').innerText = title;
     document.getElementById('bookDetails4').innerHTML = `
         <strong>Author:</strong> ${author}<br>
@@ -225,10 +233,8 @@ function openBookModal4(title, author, genre, year, type, description, reviews, 
         <strong>Description:</strong> ${description}<br>
         <strong>Reviews:</strong> ${reviews}<br>
         <strong>Availability:</strong> ${availability}
-        <!-- Add more details, reviews, availability, etc. here -->
     `;
 
-    // Open the modal
     $('#bookModal4').modal('show');
 }
 
@@ -264,35 +270,3 @@ function reserveBook4(bookTitle) {
         reserveButton.disabled = true;
     }
 }
-// function reserveBook5(bookTitle) {
-//     var reserveButton = document.getElementById('reserveButton5');
-//     if (reserveButton.innerHTML.trim() === 'Reserve') {
-
-//         reserveButton.innerHTML = 'Reserved';
-//         reserveButton.disabled = true;
-//     }
-// }
-// function reserveBook6(bookTitle) {
-//     var reserveButton = document.getElementById('reserveButton6');
-//     if (reserveButton.innerHTML.trim() === 'Reserve') {
-
-//         reserveButton.innerHTML = 'Reserved';
-//         reserveButton.disabled = true;
-//     }
-// }
-// function reserveBook7(bookTitle) {
-//     var reserveButton = document.getElementById('reserveButton7');
-//     if (reserveButton.innerHTML.trim() === 'Reserve') {
-
-//         reserveButton.innerHTML = 'Reserved';
-//         reserveButton.disabled = true;
-//     }
-// }
-// function reserveBook8(bookTitle) {
-//     var reserveButton = document.getElementById('reserveButton8');
-//     if (reserveButton.innerHTML.trim() === 'Reserve') {
-
-//         reserveButton.innerHTML = 'Reserved';
-//         reserveButton.disabled = true;
-//     }
-// }
