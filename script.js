@@ -31,7 +31,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 loop: true,
                 direction: 'alternate',
                 easing: 'easeInOutQuad'
-              });
+            });
+            anime({
+                targets: '.navbar-brand',
+                translateY: [-50, 0],
+                opacity: [0, 1],
+                easing: 'easeInOutQuad',
+                duration: 1000,
+            });
+            anime({
+                targets: '.navbar-nav-scroll .nav-item',
+                translateY: [50, 0],
+                opacity: [0, 1],
+                easing: 'easeInOutQuad',
+                duration: 1000,
+                delay: anime.stagger(200, { start: 300 }),
+            });
             anime({
                 targets: ['#search', '#btn-search'],
                 translateX: ['-100%', 0],
@@ -92,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+    
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
