@@ -26,25 +26,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function animateSection1() {
             // Anime.js animations for Section 1
-            
+            anime({
+                targets: ['#search', '#btn-search'],
+                translateX: ['-100%', 0], // Move from -100% to 0 along the X-axis (right to left)
+                easing: 'easeInOutQuad', // Use easing function for smooth animation
+                duration: 1000, // Animation duration in milliseconds
+                delay: anime.stagger(200), // Stagger the animation for each element
+            });
         }
 
         function animateSection2() {
             // Anime.js animations for Section 2
-            anime({
-                targets: '.section2-element',
-                // Add your animations for Section 2 here
+            document.addEventListener('DOMContentLoaded', function () {
+                // Target the div
+                var fadeInDiv = document.getElementById('fadeInDiv');
+        
+                // Use anime.js to fade in the div
+                anime({
+                    targets: fadeInDiv,
+                    opacity: [0, 1], // animate from 0 to 1
+                    duration: 1000, // animation duration in milliseconds
+                    easing: 'easeInOutQuad' // easing function for smooth animation
+                });
             });
         }
 
         function animateSection3() {
             // Anime.js animations for Section 3
             anime({
-                targets: '.section3-element',
-                // Add your animations for Section 3 here
+                targets: ['.footer'],
+                translateY: [50, 0], // Move from 50px down to 0 along the Y-axis
+                opacity: [0, 1], // Fade in from 0 to 1
+                easing: 'easeInOutQuad', // Use easing function for smooth animation
+                duration: 1000, // Animation duration in milliseconds
+                delay: anime.stagger(200), // Stagger the animation for each element
             });
         }
     });
+});
+    
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -125,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('myChart'),
         config
     );
-});
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search').addEventListener('input', function () {
