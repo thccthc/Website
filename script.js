@@ -106,41 +106,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 duration: 2000,
             });
         }
+        function openBookModal(title, author, genre, year, type, description, reviews, availability, modalIndex) {
+            var modalLabel = '#bookModalLabel' + modalIndex;
+            var bookDetails = '#bookDetails' + modalIndex;
+
+            document.querySelector(modalLabel).innerText = title;
+            document.querySelector(bookDetails).innerHTML = `
+                <strong>Author:</strong> ${author}<br>
+                <strong>Genre:</strong> ${genre}<br>
+                <strong>Year:</strong> ${year}<br>
+                <strong>Type:</strong> ${type}<br>
+                <strong>Description:</strong> ${description}<br>
+                <strong>Reviews:</strong> ${reviews}<br>
+                <strong>Availability:</strong> ${availability}
+            `;
+
+            $('#bookModal' + modalIndex).modal('show');
+        }
+
         $('#customButton').click(function () {
-            var title = "Harry Potter and the Deathly Hallows";
-            var author = "J.K. Rowling";
-            var genre = "Fiction";
-            var year = "2007";
-            var type = "Hardcover";
-            var description = "Harry, burdened with destroying Voldemorts Horcruxes, confronts isolation and uncertainty, summoned to find inner strength, while J.K. Rowling delivers long-awaited answers in the epic conclusion of the series.";
-            var reviews = "4.8 stars (112)";
-            var availability = "5";
-
-            openBookModal2(title, author, genre, year, type, description, reviews, availability);
+            openBookModal("Harry Potter and the Deathly Hallows", "J.K. Rowling", "Fiction", "2007", "Hardcover",
+                "Harry, burdened with destroying Voldemort's Horcruxes, confronts isolation and uncertainty, summoned to find inner strength, while J.K. Rowling delivers long-awaited answers in the epic conclusion of the series.",
+                "4.8 stars (112)", "5", 2);
         });
+
         $('#customButton2').click(function () {
-            var title = "Crooked Kingdom";
-            var author = "Leigh Bardugo";
-            var genre = "Romance";
-            var year = "2016";
-            var type = "Kindle Edition";
-            var description = "In the perilous aftermath of a daring heist, Kaz Brekkers crew faces betrayal, dwindling resources, and a battle for revenge and redemption in a war that will determine the fate of the Grisha world.";
-            var reviews = "4.9 stars (96)";
-            var availability = "12";
-
-            openBookModal3(title, author, genre, year, type, description, reviews, availability);
+            openBookModal("Crooked Kingdom", "Leigh Bardugo", "Romance", "2016", "Kindle Edition",
+                "In the perilous aftermath of a daring heist, Kaz Brekker's crew faces betrayal, dwindling resources, and a battle for revenge and redemption in a war that will determine the fate of the Grisha world.",
+                "4.9 stars (96)", "12", 3);
         });
-        $('#customButton3').click(function () {
-            var title = "A Court of Mist and Fury";
-            var author = "Sarah J. Maas";
-            var genre = "Fantasy";
-            var year = "2016";
-            var type = "Paperback";
-            var description = "Feyre has undergone more trials than one human woman can carry in her heart. Though she has now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people.";
-            var reviews = "No ratings (0)";
-            var availability = "9";
 
-            openBookModal4(title, author, genre, year, type, description, reviews, availability);
+        $('#customButton3').click(function () {
+            openBookModal("A Court of Mist and Fury", "Sarah J. Maas", "Fantasy", "2016", "Paperback",
+                "Feyre has undergone more trials than one human woman can carry in her heart. Though she has now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people.",
+                "No ratings (0)", "9", 4);
         });
     });
 
