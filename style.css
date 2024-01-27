@@ -103,6 +103,12 @@ section {
     text-align: center;
 }
 
+/* custom button */
+.custom-modal-button {
+    display: block;
+    margin: 0 auto;
+}
+
 /* datatable */
 #books_wrapper {
     max-width: 1000px;

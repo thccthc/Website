@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             anime({
                 targets: '#myChart',
-                translateX: [-100, 0],
+                translateX: [-200, 0],
                 opacity: [0, 1],
                 easing: 'easeInOutQuad',
                 duration: 2000,
@@ -106,8 +106,44 @@ document.addEventListener('DOMContentLoaded', function () {
                 duration: 2000,
             });
         }
+        $('#customButton').click(function () {
+            var title = "Harry Potter and the Deathly Hallows";
+            var author = "J.K. Rowling";
+            var genre = "Fiction";
+            var year = "2007";
+            var type = "Hardcover";
+            var description = "Harry, burdened with destroying Voldemorts Horcruxes, confronts isolation and uncertainty, summoned to find inner strength, while J.K. Rowling delivers long-awaited answers in the epic conclusion of the series.";
+            var reviews = "4.8 stars (112)";
+            var availability = "5";
+
+            openBookModal2(title, author, genre, year, type, description, reviews, availability);
+        });
+        $('#customButton2').click(function () {
+            var title = "Crooked Kingdom";
+            var author = "Leigh Bardugo";
+            var genre = "Romance";
+            var year = "2016";
+            var type = "Kindle Edition";
+            var description = "In the perilous aftermath of a daring heist, Kaz Brekkers crew faces betrayal, dwindling resources, and a battle for revenge and redemption in a war that will determine the fate of the Grisha world.";
+            var reviews = "4.9 stars (96)";
+            var availability = "12";
+
+            openBookModal3(title, author, genre, year, type, description, reviews, availability);
+        });
+        $('#customButton3').click(function () {
+            var title = "A Court of Mist and Fury";
+            var author = "Sarah J. Maas";
+            var genre = "Fantasy";
+            var year = "2016";
+            var type = "Paperback";
+            var description = "Feyre has undergone more trials than one human woman can carry in her heart. Though she has now been granted the powers and lifespan of the High Fae, she is haunted by her time Under the Mountain and the terrible deeds she performed to save the lives of Tamlin and his people.";
+            var reviews = "No ratings (0)";
+            var availability = "9";
+
+            openBookModal4(title, author, genre, year, type, description, reviews, availability);
+        });
     });
-    
+
     // Tooltip
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -200,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function openBookModal(title, author, genre, year, type, description, reviews, availability) {
     document.getElementById('bookModalLabel').innerText = title;
     document.getElementById('bookDetails').innerHTML = `
+    <br>
         <strong>Author:</strong> ${author}<br>
         <strong>Genre:</strong> ${genre}<br>
         <strong>Year:</strong> ${year}<br>
@@ -214,6 +251,7 @@ function openBookModal(title, author, genre, year, type, description, reviews, a
 function openBookModal2(title, author, genre, year, type, description, reviews, availability) {
     document.getElementById('bookModalLabel2').innerText = title;
     document.getElementById('bookDetails2').innerHTML = `
+    <br>
         <strong>Author:</strong> ${author}<br>
         <strong>Genre:</strong> ${genre}<br>
         <strong>Year:</strong> ${year}<br>
@@ -228,6 +266,7 @@ function openBookModal2(title, author, genre, year, type, description, reviews, 
 function openBookModal3(title, author, genre, year, type, description, reviews, availability) {
     document.getElementById('bookModalLabel3').innerText = title;
     document.getElementById('bookDetails3').innerHTML = `
+    <br>
         <strong>Author:</strong> ${author}<br>
         <strong>Genre:</strong> ${genre}<br>
         <strong>Year:</strong> ${year}<br>
@@ -242,6 +281,7 @@ function openBookModal3(title, author, genre, year, type, description, reviews, 
 function openBookModal4(title, author, genre, year, type, description, reviews, availability) {
     document.getElementById('bookModalLabel4').innerText = title;
     document.getElementById('bookDetails4').innerHTML = `
+    <br>
         <strong>Author:</strong> ${author}<br>
         <strong>Genre:</strong> ${genre}<br>
         <strong>Year:</strong> ${year}<br>
